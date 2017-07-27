@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password recovery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<style>
+	body
+	{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+	}
+	#header
+	{
+		width:100%;
+		margin:0;
+		height:80px;
+ 		float: none;
+	}
+	#header img
+	{
+		margin: 5px;
+	}
+	#content
+	{
+		padding: 20px;
+		width: 300px;
+		border: 0 solid darkgray;
+		position: relative;
+		margin: 50px auto;
+		box-shadow: 0 2px 5px darkgray;
+		transition: all 300ms;
+	}
+	#content input
+	{
+		font-size: 15pt;
+		color: black;
+		border: none;
+		padding: 10px;
+		margin: 15px 15px;
+		border-radius: 5px;
+		border: 1px solid rgba(0,0,0,0.3);
+		box-shadow: 1px 1px 2px rgba(0,0,0,0.2) inset;
+		transition: all 300ms;
+	}
+	#content input:hover, #content input:active, #content input:focus, #submit:active
+	{
+		border: 1px solid royalblue;
+		outline: none;
+    	outline-offset: 0;
+    	-webkit-appearance: none;
+	}
+	#submit:focus
+	{
+		outline: none;
+    	outline-offset: 0;
+    	-webkit-appearance: none;
+	}
+	#content input:active, #content input:focus, #content input: hover
+	{
+		border: 1px solid royalblue;
+	}
+	#content button
+	{
+		cursor: pointer;
+		border: none;
+		color: black;
+		background: rgba(0,0,0,0.1);
+		border: 1px solid rgba(0,0,0,0.3);
+		font-size: 15pt;
+		padding: 5px 15px;
+		margin: 15px auto;
+		width: 100%;
+		border-radius: 5px;
+		font-family: sans-serif;
+		transition: all 300ms;
+	}
+	#content button:hover
+	{
+		background: royalblue;
+		color: white;
+	}
+	#err_msg
+	{
+		font-family: sans-serif;
+		opacity: 0;
+		color: limegreen;
+		margin: 5px 0;
+		text-align: center;
+	}
+	#content img
+	{
+		opacity: 0;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		margin-left: -16px;
+		padding: 0;
+		width: 32px;
+		height: 32px;
+	}
+</style>
+</head>
+<body>
+<div id="header">
+	<a href="home.jsp"><img src="./img/ontrip.png"></a>
+</div>
+<div id="content">
+<p id="err_msg">Invalid Email</p>
+<img src="./img/sendmail_load.gif">
+	<form>
+		<input type="email" name="u_id" id="u_id" placeholder="Enter your email" required>
+		<input type="text" name="uname" id="uname" placeholder="Enter your name" required>
+		<button type="button" id="submit">Send recovery mail</button>
+	</form>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			var u_id = $("#u_id").val();
+			u_id = u_id.toLowerCase();
+			var uname = $("#uname").val();
+			if(u_id == "" || uname == "")
+			{
+				$("#err_msg").html("Incomplete input(s)").css({color:'crimson'}).animate({opacity:'1'}).delay(2000).animate({opacity:'0'});
+				return;
+			}
+			$("#content img").animate({opacity: '1'});
+			$.ajax({
+				type: 'POST',
+				url: 'recoveryMailServlet',
+				data: {
+					u_id: u_id,
+					uname: uname
+				},
+				success: function(result){
+					var s = result.toString();
+					if(s == 0)
+					{
+						$("#content img").animate({opacity: '0'}).delay(1000);
+						$("#err_msg").html("Invalid input(s)").css({color:'#ff9900'}).animate({opacity:'1'}).delay(2000).animate({opacity:'0'});
+						return;
+					}
+					else if(s == 1)
+					{
+						$("#content img").animate({opacity: '0'}).delay(300);
+						$("#err_msg").html("Recovery email sent").css({color:'limegreen'}).animate({opacity:'1'}).delay(2000).animate({opacity:'0'});
+						$("#submit").html("Resend mail");
+					}
+				}
+			});
+		});
+		
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register yourself now</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+	body
+	{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		background: url('./img/register-bg.jpg') 0 0 no-repeat;
+		background-size: cover;
+	}
+	#header
+	{
+		width:100%;
+		margin:0;
+		height:80px;
+ 		float: none;
+	}
+	#header img
+	{
+		margin: 5px;
+	}
+	ul
+	{
+		margin: 10px auto;
+		width: 640px;
+	}
+	ul li
+	{
+		list-style: none;
+		float: left;
+		margin: 5px;
+		padding: 5px;
+		height: auto;
+		border-radius: 10px;
+		background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5));
+	}
+	ul div
+	{
+		width: 300px;
+	}
+	ul input,ul textarea
+	{
+		width:250px;
+		color: white;
+		border: none;
+		padding: 10px;
+		margin: 10px 10px;
+		border-radius: 0;
+		border: 1px solid rgba(0,0,0,0.3);
+		background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1));
+		transition: all 100ms;
+	}
+	input[type="file"]
+	{
+		cursor: pointer;
+	}
+	ul input:hover,ul textarea:hover,ul input:active,ul textarea:active,ul input:focus,ul textarea:focus
+	{
+		border-left: 3px solid royalblue;
+		outline: none;
+    	outline-offset: 0;
+    	-webkit-appearance: none;
+	}
+	ul textarea
+	{
+		min-width: 250px;
+		max-width: 250px;
+		min-height: 50px;
+		max-height: 50px;
+	}
+	#pp
+	{
+		border-radius: 50%;
+		border: 2px solid white;
+		background: url(./profile/user.png) no-repeat;
+		background-size: 100% 100%;
+		width: 200px;
+		height: 200px;
+		margin: auto;
+	}
+	form button
+	{
+		border: none;
+		color: white;
+		background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1));
+		border: 1px solid rgba(0,0,0,0.3);
+		font-size: 15pt;
+		padding: 5px 15px;
+		margin: 15px 10px;
+		width: 100px;
+		border-radius: 5px;
+		font-family: sans-serif;
+		transition: all 300ms;
+	}
+	form button:hover
+	{
+		border: 1px solid white;
+		box-shadow: 0 0 5px white;
+		cursor: pointer;
+	}
+	ul h2
+	{
+		color: white;
+		border-bottom: 2px solid white;
+		font-family: sans-serif;
+	}
+	a[href="login.html"]
+	{
+		font-size: 15pt;
+		font-family: sans-serif;
+		float: right;
+		text-decoration: none;
+		color: white;
+		border-radius: 10px;
+		padding: 10px;
+		margin: 0;
+		background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3));
+	}
+	#err
+	{
+		opacity: 0;
+		padding: 10px;
+		display: inline;
+		transition: all 500ms;
+	}
+	#err_msg
+	{
+		width: 290px;
+		color: limegreen;
+	}
+	#err_img
+	{
+		clear: both;
+		float: left;
+		width: 32px;
+		height: 32px;
+		margin: 20px;
+	}
+</style>
+</head>
+<body>
+<a href="login.html">Already registered? Just login</a>
+<div id="header">
+	<a href="home.jsp"><img src="./img/ontrip-white.png"></a>
+</div>
+<div id="register">
+	<form method="post" action="registerServlet" enctype="multipart/form-data">
+	<ul>
+		<li>
+			<div id="cinfo">
+				<h2>Customer Information</h2>
+				<input autofocus="autofocus" type="email" id="u_id" name="u_id" required placeholder="Enter your email" onblur="chkUid();">
+				<input type="text" name="uname" required placeholder="What is your name?">
+				<textarea name="uaddress" required placeholder="Where do you live?"></textarea>
+				<input type="text" name="uphone" placeholder="Your mobile number?" pattern="[0-9]{10}" maxlength="10">
+				<input type="password" name="upass" id="upass" placeholder="Choose a password" required onblur="chkPass()">
+				<input type="password" id="upass_retype" placeholder="Retype the password" required onblur="chkPass()"><br>
+				<button type="submit" id="reg">Register</button>
+				<button type="reset">Reset</button>
+			</div>
+		</li>
+		<li>
+			<div id="cphoto">
+				<h2>Your photo?</h2>
+				<div id="pp"></div>
+				<input type="file" name="uimage" id="uimage">
+			</div>
+		</li>
+			
+		<li id="err">
+			<img src="./img/success.png" id="err_img">
+			<p id="err_msg">A verification mail is sent. Please check your e-mail.</p>
+		</li>
+	</ul>
+	</form>
+</div>
+<script>
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#pp').css('background','url('+e.target.result+') 50% 50% no-repeat');
+            $('#pp').css('background-size','cover');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function chkPass()
+{
+	var pass = document.getElementById("upass");
+	var pass_retype = document.getElementById("upass_retype");
+	var reg = document.getElementById("reg");
+	if(pass.value != pass_retype.value)
+	{
+		//reg.disabled = true;
+		err_img.setAttribute('src', './img/fail.png');
+		err_msg.innerHTML = "Passwords don't match. Please check your password.";
+		err_msg.style.color = "crimson";
+		err.style.opacity = "1";
+		pass.innerHTML = "";
+		pass_retype.innerHTML = "";
+		return;
+	}
+	else
+		hideErr();
+}
+function hideErr()
+{
+	reg.disabled = false;
+	err.style.opacity = "0";
+}
+function chkUid(){
+	var err = document.getElementById("err");
+	var err_img = document.getElementById("err_img");
+	var err_msg = document.getElementById("err_msg");
+	var u_id = document.getElementById("u_id").value;
+	var reg = document.getElementById("reg");
+		$.ajax({
+			type: 'POST',
+			url: "chkUidServlet",
+			data: {
+				u_id: u_id
+			},
+			success: function(result){
+				var s = result.toString();
+				//alert("2."+typeof s+" "+s);
+				if(s == 1)
+				{
+					reg.disabled = true;
+					err_img.setAttribute('src', './img/fail.png');
+					err_msg.innerHTML = "E-mail already exists. Please use another one.";
+					err_msg.style.color = "crimson";
+					err.style.opacity = "1";
+					return;
+				}
+				else
+					hideErr();
+			}
+	});
+}
+	
+$(document).ready(function(){
+	$("#uimage").change(function(){
+	    readURL(this);
+	    });
+	});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,404 @@
+@CHARSET "ISO-8859-1";
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    /*border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);*/
+    background: rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+body {
+	padding: 0;
+	margin: 0;
+}
+
+#booking {
+	padding: 20px 0;
+	width: 100%;
+	height: 550px;
+	margin: 10px 0;
+	background: url(./../img/booking.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+#header {
+	width: 100%;
+	margin: 0;
+	height: 70px;
+	float: none;
+}
+
+#logo {
+	float: left;
+	background: url(./../img/ontrip.png) no-repeat;
+	width: 350px;
+	height: 70px;
+	margin: 5px;
+}
+
+#login-btn {
+	float: right;
+	width: auto;
+	border-radius: 5px 0 0 5px;
+	border: 1px solid darkgray;
+	height: 70px;
+	margin: 5px 0 5px 10px;
+	cursor: pointer;
+	transition: all 200ms;
+}
+
+#login-btn:hover {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#login-btn img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin: 15px 5px;
+	border-radius: 50%;
+	border: 1px solid darkgray;
+	
+}
+
+#login-btn p {
+	float: right;
+	height: 20px;
+	margin: 25px 10px;
+	font-family: sans-serif;
+}
+#booking-panel
+{
+	position: relative;
+	box-sizing: box-border;
+	width: 97%;
+	margin: 10px auto;
+	height: auto;
+	padding: 0;
+	background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2));
+	overflow: hidden;
+}
+#tab
+{
+	padding: 0;
+	box-sizing: box-border;
+	list-style: none;
+	margin: 0;
+	border: 0 solid white;
+	width:auto;
+	clear: both;
+}
+#tab li
+{
+	display: inline;
+	margin: -1px;
+	padding: 0;
+}
+#tab li button
+{
+	cursor: pointer;
+	border: none;
+	margin: 0;
+	padding: 10px;
+	width: 100px;
+	border-radius: 0 0 10px 10px;
+	color: white;
+	background: rgba(0,0,0,0.7);
+	transition: all 300ms;
+}
+#tab li button:hover
+{
+	background: royalblue;
+}
+#tab-content
+{
+	position: relative;
+	float:left;
+	margin: 10px 0 10px 20px;
+	width: 35%;
+	height: 450px;
+	border: 0 solid white;
+	padding: 0;
+}
+#search
+{
+	overflow: hidden;
+	position: relative;
+	color: white;
+	float: right;
+	width: 60%;
+	margin: 10px 15px 10px 0;
+	border-left: 2px solid white;
+	border-radius: 0 5px 5px 0;
+	height: 450px;
+	background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3));
+}
+#tab-content div[id$="content"]
+{
+	display: none;
+	color: white;
+	position: absolute;
+	width: 100%;
+	height: 95%;
+	border-right: 2px inset;
+	border-radius: 5px 0 0 5px;
+	background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.3));
+	transition: all 200ms;
+}
+#view_menu
+{
+	display: none;
+	float: right;
+	position: relative;
+	width: 30px;
+	border-radius: 0 5px 5px 0;
+	border: 1px solid darkgray;
+	height: 70px;
+	margin: 5px 10px 5px -1px;
+	cursor: pointer;
+}
+/* #view_menu:hover #menu */
+/* { */
+/* 	display: block; */
+/* } */
+
+#view_menu img
+{
+	width: 10px;
+	margin: 30px 10px;
+}
+#menu
+{
+	z-index: 999999;
+	display: none;
+	position: absolute;
+	right: 0;
+	width: 300px;
+	background: white;
+	border: 1px solid #e2e2e2;
+	box-shadow: 0 0 3px darkgray;
+	padding: 10px;
+	height: 150px;
+}
+#menu li
+{
+	list-style: none;
+	display: block;
+	
+}
+#menu li a
+{
+	text-decoration: none;
+	text-align: right;
+	width:100px;
+	float:right;
+	color: royalblue;
+	margin: 5px 0;
+	padding: 5px;
+	border-right: 2px solid royalblue;
+	transition: all 300ms;
+}
+#menu li a:hover
+{
+	background: #d3ddf8;
+}
+#view_menu p
+{
+	padding: 10px;
+	float: left;
+	width:50%;
+	color: royalblue;
+	border-right: 2px inset #e2e2e2;
+}
+.form-content input
+{
+	width: 35%;
+	font-family: sans-serif;
+	font-size: 12pt;
+	color: white;
+	border: none;
+	padding: 10px;
+	margin: 25px 0 25px 10px;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	background: rgba(0,0,0,0.4);
+	transition: all 300ms;
+}
+.form-content h1
+{
+	font-family: sans-serif;
+	font-size: 12pt;
+	color: white;
+	border: none;
+	padding: 10px;
+	margin: 25px 0 25px 10px;
+	border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	background: rgba(0,0,0,0.4);
+	transition: all 300ms;
+}
+.form-content input[type="time"]
+{
+	width:100px;
+}
+.form-content input:hover,.form-content input:active,.form-content input:focus
+{
+	outline: none;
+	background: rgba(0,0,0,0.6);
+}
+.form-content button
+{
+	border: none;
+	color: white;
+	background: rgba(0,0,0,0.5);
+	border: 1px solid rgba(0,0,0,0.3);
+	font-size: 15pt;
+	padding: 15px 25px;
+	margin: 25px 10px;
+	width: 200px;
+	border-radius: 5px;
+	font-family: sans-serif;
+	transition: all 300ms;
+	cursor: pointer;
+}
+.form-content button:hover
+{
+	background: rgba(0,0,0,0.7);
+}
+
+.result
+{
+	box-sizing: border-box;
+	width:100%;
+	min-width: 790px;
+	margin: 2px 0;
+	height: 50px;
+	background: rgba(0,0,0,0.2);
+	padding: 10px 5px;
+	border-bottom: 1px solid white;
+	transition: all 300ms;
+}
+.result:hover
+{
+	background: rgba(0,0,0,0.4);
+}
+.name, .seat_avail, .price, .depart, .arrive, .class_type
+{
+	width: 110px;
+	max-width: 110px;
+	border: none;
+	background: transparent;
+	border-left: 1px inset rgba(255,255,255,0.5);
+	padding: 5px;
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+}
+.result form button
+{
+	box-sizing: border-box;
+	border: none;
+	background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3));
+	color: white;
+	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 5px;
+	float: right;
+	margin: 0;
+	transition: all 300ms;
+}
+.result form button:hover
+{
+	background: royalblue;
+}
+#search-header
+{
+	display: none;
+	list-style: none;
+	box-sizing: border-box;
+	width:100%;
+	min-width: 790px;
+	margin: 0;
+	height: 50px;
+	background: rgba(0,0,0,0.6);
+	padding: 10px 5px;
+	border-bottom: 5px solid white;
+}
+#search-header li
+{
+	display: inline;
+	margin: 0;
+	padding: 0;
+	width: 110px;
+}
+#search-header li input
+{
+	width: 110px;
+	max-width: 110px;
+	border: none;
+	background: transparent;
+	border-left: 1px inset rgba(255,255,255,0.5);
+	margin: 0;
+	padding: 5px;
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+}
+#bus-content span, #train-content span, #flight-content span
+{
+	margin : 0;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+.span
+{
+	padding: 0;
+	float: left;
+	box-sizing: border-box;
+	margin: 0 0 0 10px;
+}
+#search-placeholder,#no-result, #result-loading
+{
+	position: absolute;
+	margin: 0;
+	padding: 100px 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: rgba(255,255,255,0.4);
+	font-family: sans-serif;
+	font-size: 35pt;
+}
+#err-msg
+{
+	opacity: 0;
+	position: absolute;
+	margin: 0;
+	padding: 100px 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: rgba(255,255,255,0.4);
+	font-family: sans-serif;
+	font-size: 35pt;
+}
+
+
+
+
+
+
+
+

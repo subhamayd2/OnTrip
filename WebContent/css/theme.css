@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+.navbar{
+	border: none;
+	background: transparent;
+}
+.navbar-toggle{
+	border: none;
+	background: transparent !important;
+}
+/* .navbar a, .navbar button{ */
+/* 	color: dimgray; */
+/* } */
+/* .navbar a:hover, .navbar li:hover, .navbar button:hover{ */
+/* 	background: transparent !important; */
+/* 	color: white; */
+/* } */
+.panel{
+	transition: all 500ms;
+}
+.panel:hover{
+	box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+#head{
+	background: url(./../img/register-bg.jpg) no-repeat fixed;
+	background-size: cover;
+	padding: 100px 25px;
+}
+#head h1{
+	color: white;
+	padding: 10px 15px;
+}
+#userDrop:hover{
+	cursor: pointer;
+	background: transparent;
+	color: white;
+}

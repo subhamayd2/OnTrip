@@ -1,0 +1,53 @@
+@CHARSET "ISO-8859-1";
+@media only screen and (max-width: 600px){
+	#logo
+	{
+		background: url("./../img/ontrip_mobile.png") no-repeat;
+		width: 150px;
+	}
+	#booking
+	{
+		background: white;
+	}
+	#booking-panel
+	{
+		width: 100%;
+	}
+	#tab-content
+	{
+		margin: 10px 0;
+		border-radius: 0;
+		width: 100%;
+	}
+	#search
+	{
+		width: 100%;
+		border-radius: 0;
+		margin: 0;
+	}
+	.form-content input, .form-content h1
+	{
+		margin: 10px 10px;
+		float: none;
+		border: 1px solid rgba(255,255,255,0.5);
+	}
+	#view_menu
+	{
+		width: 20px;
+	}
+	#view_menu img
+	{
+		width: 10px;
+		margin: 30px 5px;
+	}
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,194 @@
+@CHARSET "ISO-8859-1";
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+#search
+{
+	padding: 0;
+	overflow: hidden;
+	position: relative;
+	color: white;
+	height: 450px;
+}
+#search-header
+{
+	display: none;
+	list-style: none;
+	box-sizing: border-box;
+	width:100%;
+	min-width: 790px;
+	margin: 0;
+	height: 50px;
+	background: rgba(0,0,0,0.6);
+	padding: 10px 5px;
+	border-bottom: 5px solid white;
+}
+#search-header li
+{
+	display: inline;
+	margin: 0;
+	padding: 0;
+	width: 110px;
+}
+#search-header li input
+{
+	width: 110px;
+	max-width: 110px;
+	border: none;
+	background: transparent;
+	border-left: 1px inset rgba(255,255,255,0.5);
+	margin: 0;
+	padding: 5px;
+	color: white;
+	text-align: center;
+}
+#search-placeholder,#no-result, #result-loading
+{
+	position: absolute;
+	margin: 0;
+	padding: 100px 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: rgba(0,0,0,0.2);
+	font-size: 35pt;
+}
+#err-msg
+{
+	opacity: 0;
+	position: absolute;
+	margin: 0;
+	padding: 100px 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: rgba(0,0,0,0.2);
+	font-size: 35pt;
+}
+.result
+{
+	box-sizing: border-box;
+	width:100%;
+	min-width: 790px;
+	margin: 2px 0;
+	height: 50px;
+	background: rgba(0,0,0,0.05);
+	padding: 10px 5px;
+	border-bottom: 1px solid white;
+	transition: all 300ms;
+}
+.result:hover
+{
+	background: rgba(0,0,0,0.1);
+}
+.name, .seat_avail, .price, .depart, .arrive, .class_type
+{
+	width: 110px;
+	max-width: 110px;
+	border: none;
+	background: transparent;
+	border-left: 1px inset rgba(255,255,255,0.5);
+	padding: 5px;
+	color: black;
+	font-family: sans-serif;
+	text-align: center;
+}
+.result form button
+{
+	box-sizing: border-box;
+	border: none;
+	background: rgba(0,0,0,0.5);
+	color: white;
+	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 5px;
+	float: right;
+	margin: 0;
+	transition: all 300ms;
+}
+.result form button:hover
+{
+	background: rgba(0,0,0,0.3);
+}
+.slideanim, .slideanimload {visibility:hidden;}
+.slide,.slideload {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+    /* The duration of the animation */
+    animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+a[href="#head"] {
+	opacity: 0;
+	transition: opacity 500ms;
+}
+#about-con span
+{
+	font-size: 50px;
+	color: #eba837;
+}
+.dropdown-menu li a:hover{
+	background: darkgray;
+	color: white;
+}
+#socialLink a img{
+	transition: all 300ms;
+}
+#socialLink a img:hover{
+	transform: scale(1.1,1.1);
+	-ms-transform: scale(1.1,1.1);
+	-webkit-transform: scale(1.1,1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

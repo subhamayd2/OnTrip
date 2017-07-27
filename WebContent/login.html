@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<title>Login to OnTrip</title>
+<style>
+	body
+	{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		background: url('./img/login-bg.jpg') 0 0 no-repeat;
+		background-size: cover;
+	}
+	#header
+	{
+		width:100%;
+		margin:0;
+		height:80px;
+ 		float: none;
+	}
+	#header img
+	{
+		margin: 5px;
+	}
+	form
+	{
+		float: right;
+		padding: 10px;
+		border-radius: 10px;
+		margin: 20px;
+		background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1));
+		display: block;
+		width: 283px;
+		border: 5px solid white;
+	}
+	input
+	{
+		font-size: 15pt;
+		color: white;
+		border: none;
+		padding: 10px;
+		margin: 15px 10px;
+		border-radius: 5px;
+		border: 1px solid rgba(0,0,0,0.3);
+		background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.1));
+	}
+	form button
+	{
+		border: none;
+		color: white;
+		background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1));
+		border: 1px solid rgba(0,0,0,0.3);
+		font-size: 15pt;
+		padding: 5px 15px;
+		margin: 15px 10px;
+		width: 100px;
+		border-radius: 5px;
+		font-family: sans-serif;
+		transition: all 300ms;
+	}
+	form button:hover
+	{
+		cursor: pointer;
+		border: 1px solid white;
+	}
+	form p
+	{
+		color: white;
+		margin: 0;
+		padding: 10px 10px;
+		border-bottom: 2px solid white;
+		font-family: sans-serif;
+		letter-spacing: 1px;
+		word-spacing: 2px;
+	}
+	form a
+	{
+		text-decoration: none;
+		color: white;
+		margin: 20px 10px;
+		font-family: sans-serif;
+		transition: all 200ms;
+	}
+	form a:hover
+	{
+		color: lightgray;
+	}
+	#ad
+	{
+		float: left;
+	}
+	#ad1
+	
+</style>
+</head>
+<body>
+<div id="header">
+	<a href="home.jsp"><img src="./img/ontrip-white.png"></a>
+</div>
+<div id="ad">
+	<div id="ad1"></div>
+	<div id="ad2"></div>
+	<div id="ad3"></div>
+</div>
+<form>
+	<p>Let us know who it is...</p>
+	<input id="u_id" type="email" name="u_id" placeholder="Enter email" autofocus="autofocus">
+	<input id="upass" type="password" name="upass" placeholder="Enter password">
+	<button type="button" onclick="login()">Login</button><br>
+	<a href="passReset.html">Forgot password?</a><br>
+	<a href="register.html">New here? Register now</a>
+</form>
+	
+	
+	
+<script>
+	function login()
+	{
+		var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+		var u_id = document.getElementById("u_id").value;
+		var upass = document.getElementById("upass").value;
+		if(!reg.test(u_id))
+		{
+			$("#login_err_msg").addClass("in");
+			return;
+		}
+		$.ajax({
+			type: 'POST',
+			url: "loginServlet",
+			data: {
+				u_id: u_id,
+				upass: upass
+			},
+			success: function(result){
+				var s = result.toString();
+				if(s == 1)
+				{
+					window.location.assign("home.jsp");
+				}
+				else
+					alert("Invalid");
+			}
+		});
+	}
+</script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
